@@ -7,7 +7,7 @@
 #define ROW_LENGHT 1000
 #define FILE_SIZE 9924
 
-void reduce_tasacion(Map *tasaciones)
+void reduce_tasacion(Map *tasaciones, int verbose)
 {
   int v_liviano = 0;
   int carga = 0;
@@ -18,12 +18,15 @@ void reduce_tasacion(Map *tasaciones)
     carga += tasaciones[i].carga;
     transporte_publico += tasaciones[i].transporte_publico;
   }
-  printf("Total de tasaciones para vehiculo liviano:%d\n", v_liviano);
-  printf("Total de tasaciones para vehiculo de carga:%d\n", carga);
-  printf("Total de tasaciones para vehiculo de transporte:%d\n\n", transporte_publico);
+  if (verbose == 1)
+  {
+    printf("Total de tasaciones para vehiculo liviano:%d\n", v_liviano);
+    printf("Total de tasaciones para vehiculo de carga:%d\n", carga);
+    printf("Total de tasaciones para vehiculo de transporte:%d\n\n", transporte_publico);
+  }
 }
 
-void reduce_valor_pagado(Map *valor_pagado)
+void reduce_valor_pagado(Map *valor_pagado, int verbose)
 {
   int v_liviano = 0;
   int carga = 0;
@@ -34,12 +37,16 @@ void reduce_valor_pagado(Map *valor_pagado)
     carga += valor_pagado[i].carga;
     transporte_publico += valor_pagado[i].transporte_publico;
   }
-  printf("Valor pagado total para vehiculo liviano:%d\n", v_liviano);
-  printf("Valor pagado total para vehiculo de carga:%d\n", carga);
-  printf("Valor pagado total para vehiculo de transporte:%d\n\n", transporte_publico);
+
+  if (verbose == 1)
+  {
+    printf("Valor pagado total para vehiculo liviano:%d\n", v_liviano);
+    printf("Valor pagado total para vehiculo de carga:%d\n", carga);
+    printf("Valor pagado total para vehiculo de transporte:%d\n\n", transporte_publico);
+  }
 }
 
-void reduce_puertas(Map *valor_pagado)
+void reduce_puertas(Map *valor_pagado, int verbose)
 {
   int v_liviano_2 = 0;
   int v_liviano_4 = 0;
@@ -82,11 +89,15 @@ void reduce_puertas(Map *valor_pagado)
       trans_publico_5 += 1;
     }
   }
-  printf("Total de vehiculos con 2 puertas para Vehiculos Livianos: %d\n", v_liviano_2);
-  printf("Total de vehiculos con 4 puertas para Vehiculos Livianos: %d\n", v_liviano_4);
-  printf("Total de vehiculos con 2 puertas para carga: %d\n", carga_2);
-  printf("Total de vehiculos con 4 puertas para carga: %d\n", carga_4);
-  printf("Total de vehiculos con 2 puertas para Transporte Publico: %d\n", trans_publico_2);
-  printf("Total de vehiculos con 4 puertas para Transporte Publico: %d\n", trans_publico_4);
-  printf("Total de vehiculos con 5 puertas para Transporte Publico: %d\n", trans_publico_5);
+
+  if (verbose == 1)
+  {
+    printf("Total de vehiculos con 2 puertas para Vehiculos Livianos: %d\n", v_liviano_2);
+    printf("Total de vehiculos con 4 puertas para Vehiculos Livianos: %d\n", v_liviano_4);
+    printf("Total de vehiculos con 2 puertas para carga: %d\n", carga_2);
+    printf("Total de vehiculos con 4 puertas para carga: %d\n", carga_4);
+    printf("Total de vehiculos con 2 puertas para Transporte Publico: %d\n", trans_publico_2);
+    printf("Total de vehiculos con 4 puertas para Transporte Publico: %d\n", trans_publico_4);
+    printf("Total de vehiculos con 5 puertas para Transporte Publico: %d\n", trans_publico_5);
+  }
 }
