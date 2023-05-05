@@ -1,2 +1,2 @@
 all:
-	gcc coordinador.c map.c reduce.c -o main
+	gcc coordinador.c map.c reduce.c -o lab1
