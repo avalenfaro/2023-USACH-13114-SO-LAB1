@@ -7,9 +7,6 @@
 Este laboratorio tiene como objetivo resolver un problema de manera secuencial, el cual posteriormente debe ser paralelizado utilizando procesos. La aplicación debe ser escrita en el lenguaje de programación C sobre sistema operativo LINUX.
 
 Para más información revisar el [enunciado](lab1_SO12023.pdf)
-<h2>Goal and requirements</h2>
-
-The idea behind first implementation. What is expected, what should be included, what should not be included.
 
 <h2>Aprendizajes</h2>
 
