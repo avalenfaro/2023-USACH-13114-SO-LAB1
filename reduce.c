@@ -1,3 +1,14 @@
+/**
+ * @file      reduce.c
+ * @author    Álvaro Valenzuela A.
+ * @brief     Archivo que se encarga de reducir y sumar todos los valores de un arreglo de objetos Map.
+ * @version   0.1
+ * @date      2023-05-05
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,6 +18,13 @@
 #define ROW_LENGHT 1000
 #define FILE_SIZE 9924
 
+/**
+ * @brief Función que reduce un mapeo de tasaciones e imprime en pantalla el resultado de la correspondiente sumatoria.
+ *
+ * @param tasaciones    Arreglo de tasaciones
+ * @param verbose       Valor que determina si queremos imprimir por consola {0, 1}
+ * @param total_lineas  Total de lineas a reducir
+ */
 void reduce_tasacion(Map *tasaciones, int verbose, int total_lineas)
 {
   int v_liviano = 0;
@@ -26,6 +44,13 @@ void reduce_tasacion(Map *tasaciones, int verbose, int total_lineas)
   }
 }
 
+/**
+ * @brief Función que reduce un mapeo de valores_pagados e imprime en pantalla el resultado de la correspondiente sumatoria.
+ *
+ * @param valor_pagado  Arreglo de valor_pagado
+ * @param verbose       Valor que determina si queremos imprimir por consola {0, 1}
+ * @param total_lineas  Total de lineas a reducir
+ */
 void reduce_valor_pagado(Map *valor_pagado, int verbose, int total_lineas)
 {
   int v_liviano = 0;
@@ -46,7 +71,14 @@ void reduce_valor_pagado(Map *valor_pagado, int verbose, int total_lineas)
   }
 }
 
-void reduce_puertas(Map *valor_pagado, int verbose, int total_lineas)
+/**
+ * @brief Función que reduce un mapeo de puertas e imprime en pantalla el resultado de la correspondiente sumatoria.
+ *
+ * @param puertas       Arreglo de puertas
+ * @param verbose       Valor que determina si queremos imprimir por consola {0, 1}
+ * @param total_lineas  Total de lineas a reducir
+ */
+void reduce_puertas(Map *puertas, int verbose, int total_lineas)
 {
   int v_liviano_2 = 0;
   int v_liviano_4 = 0;
@@ -57,34 +89,34 @@ void reduce_puertas(Map *valor_pagado, int verbose, int total_lineas)
   int trans_publico_5 = 0;
   for (int i = 0; i < total_lineas; i++)
   {
-    if (valor_pagado[i].vehiculo_liviano == 2)
+    if (puertas[i].vehiculo_liviano == 2)
     {
       v_liviano_2 += 1;
     }
 
-    if (valor_pagado[i].vehiculo_liviano == 4)
+    if (puertas[i].vehiculo_liviano == 4)
     {
       v_liviano_4 += 1;
     }
 
-    if (valor_pagado[i].carga == 2)
+    if (puertas[i].carga == 2)
     {
       carga_2 += 1;
     }
-    if (valor_pagado[i].carga == 4)
+    if (puertas[i].carga == 4)
     {
       carga_4 += 1;
     }
 
-    if (valor_pagado[i].transporte_publico == 2)
+    if (puertas[i].transporte_publico == 2)
     {
       trans_publico_2 += 1;
     }
-    if (valor_pagado[i].transporte_publico == 4)
+    if (puertas[i].transporte_publico == 4)
     {
       trans_publico_4 += 1;
     }
-    if (valor_pagado[i].transporte_publico == 5)
+    if (puertas[i].transporte_publico == 5)
     {
       trans_publico_5 += 1;
     }

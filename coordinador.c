@@ -1,9 +1,9 @@
 /**
- * @file coordinador.c
- * @author your name (you@domain.com)
- * @brief
- * @version 0.1
- * @date 2023-05-05
+ * @file      coordinador.c
+ * @author    Álvaro Valenzuela
+ * @brief     Archivo coordinador que orquesta los llamados a las funciones de mapeo y reduce.
+ * @version   0.1
+ * @date      2023-05-05
  *
  * @copyright Copyright (c) 2023
  *
@@ -19,15 +19,15 @@
 #include "reduce.h"
 #include "coordinador.h"
 
-#define ROW_LENGHT 1000
+#define ROW_LENGHT 1000 /* */
 #define FILE_SIZE 9924
 
 /**
- * @brief Get the flags object
+ * @brief Captura los argumentos proporcionados por consola.
  *
  * @param argc
  * @param argv
- * @param c
+ * @param Coordinador
  */
 void get_flags(int argc, char const *argv[], Coordinador *c)
 {
@@ -55,9 +55,10 @@ void get_flags(int argc, char const *argv[], Coordinador *c)
 }
 
 /**
- * @brief
+ * @brief Busca el archivo proporcionado en los argumentos para después leer sus filas.
  *
  * @param nombre_archivo
+ * @throw File not found
  * @return FILE*
  */
 FILE *read_file(char nombre_archivo[])
@@ -74,6 +75,13 @@ FILE *read_file(char nombre_archivo[])
   return fp;
 }
 
+/**
+ * @brief Busca un token en particular (palabra) en una fila de caracteres.
+ * @warning La fila proporcionada en los argumentos debe estar limitada por ;
+ * @param row
+ * @param col_number
+ * @return char*
+ */
 char *find_token(char *row, int col_number)
 {
   char *row_copy = (char *)malloc(ROW_LENGHT);
@@ -93,6 +101,14 @@ char *find_token(char *row, int col_number)
   return token;
 }
 
+/**
+ * @brief Lee las lineas de un archivo de texto
+ *
+ * @param fp            Archivo a leer
+ * @param vehiculos     Arreglo vacio para almacenar valores
+ * @param total_lineas  Total de lineas a leer del archivo
+ * @warning Esta función NO se ha probado con valores de total_lineas < 0 y total_lineas > 10000.
+ */
 void read_lines(FILE *fp, Vehiculo vehiculos[], int total_lineas)
 {
   char row[FILE_SIZE];
@@ -118,10 +134,10 @@ void read_lines(FILE *fp, Vehiculo vehiculos[], int total_lineas)
 }
 
 /**
- * @brief
+ * @brief Función utilitaria para leer las n primeras filas de un arreglo de vehiculos.
  *
- * @param n
- * @param vehiculos
+ * @param n         Numero de filas
+ * @param vehiculos Arreglo de vehiculos
  */
 void head_vehiculos(int n, Vehiculo vehiculos[])
 {
@@ -136,10 +152,10 @@ void head_vehiculos(int n, Vehiculo vehiculos[])
 }
 
 /**
- * @brief
+ * @brief Función utilitaria para leer las n primeras filas de un arreglo de mapeos.
  *
- * @param n
- * @param map
+ * @param n   Numero de filas
+ * @param map Arreglo de mapeos
  */
 void head_mapeo(int n, Map map[])
 {
