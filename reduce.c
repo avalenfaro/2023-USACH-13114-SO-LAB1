@@ -12,7 +12,7 @@ void reduce_tasacion(Map *tasaciones, int verbose, int total_lineas)
   int v_liviano = 0;
   int carga = 0;
   int transporte_publico = 0;
-  for (int i = 0; i < total_lineas - 1; i++)
+  for (int i = 0; i < total_lineas; i++)
   {
     v_liviano += tasaciones[i].vehiculo_liviano;
     carga += tasaciones[i].carga;
@@ -31,7 +31,7 @@ void reduce_valor_pagado(Map *valor_pagado, int verbose, int total_lineas)
   int v_liviano = 0;
   int carga = 0;
   int transporte_publico = 0;
-  for (int i = 0; i < total_lineas - 1; i++)
+  for (int i = 0; i < total_lineas; i++)
   {
     v_liviano += valor_pagado[i].vehiculo_liviano;
     carga += valor_pagado[i].carga;
@@ -55,7 +55,7 @@ void reduce_puertas(Map *valor_pagado, int verbose, int total_lineas)
   int trans_publico_2 = 0;
   int trans_publico_4 = 0;
   int trans_publico_5 = 0;
-  for (int i = 0; i < total_lineas - 1; i++)
+  for (int i = 0; i < total_lineas; i++)
   {
     if (valor_pagado[i].vehiculo_liviano == 2)
     {

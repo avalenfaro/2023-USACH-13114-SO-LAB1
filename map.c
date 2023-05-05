@@ -14,7 +14,7 @@ const char *TRANSPORTE_PUBLICO_KEY = "Transporte Publico";
 Map *map_tasaciones(Vehiculo vehiculos[], int total_lineas)
 {
   Map *map_tasacion = (Map *)malloc(sizeof(Map) * total_lineas);
-  for (int i = 0; i < total_lineas - 1; i++)
+  for (int i = 0; i < total_lineas; i++)
   {
     if (strcmp(vehiculos[i].grupo_vehiculo, VEHICULO_LIVIANO_KEY) == 0)
     {
@@ -38,7 +38,7 @@ Map *map_tasaciones(Vehiculo vehiculos[], int total_lineas)
 Map *map_valor_pagado(Vehiculo vehiculos[], int total_lineas)
 {
   Map *map_valor_pagado = (Map *)malloc(sizeof(Map) * total_lineas);
-  for (int i = 0; i < total_lineas - 1; i++)
+  for (int i = 0; i < total_lineas; i++)
   {
     if (strcmp(vehiculos[i].grupo_vehiculo, VEHICULO_LIVIANO_KEY) == 0)
     {
@@ -62,7 +62,7 @@ Map *map_valor_pagado(Vehiculo vehiculos[], int total_lineas)
 Map *map_puertas(Vehiculo vehiculos[], int total_lineas)
 {
   Map *map_puertas = (Map *)malloc(sizeof(Map) * total_lineas);
-  for (int i = 0; i < total_lineas - 1; i++)
+  for (int i = 0; i < total_lineas; i++)
   {
     if (strcmp(vehiculos[i].grupo_vehiculo, VEHICULO_LIVIANO_KEY) == 0)
     {

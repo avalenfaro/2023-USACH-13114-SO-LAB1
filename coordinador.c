@@ -95,16 +95,25 @@ char *find_token(char *row, int col_number)
 
 void read_lines(FILE *fp, Vehiculo vehiculos[], int total_lineas)
 {
-  char row[ROW_LENGHT];
-  fgets(row, ROW_LENGHT, fp);
-
-  for (int i = 0; i < total_lineas - 1; i++)
+  char row[FILE_SIZE];
+  int i = 0;
+  while (fgets(row, FILE_SIZE, fp) != NULL)
   {
-    fgets(row, total_lineas, fp);
-    vehiculos[i].grupo_vehiculo = find_token(row, 1);
-    vehiculos[i].tasacion = atof(find_token(row, 6));
-    vehiculos[i].valor_pagado = atof(find_token(row, 11));
-    vehiculos[i].puertas = atoi(find_token(row, 23));
+    if (i == 0)
+    {
+      i++;
+      continue;
+    }
+
+    if (i > total_lineas)
+    {
+      break;
+    }
+    vehiculos[i - 1].grupo_vehiculo = find_token(row, 1);
+    vehiculos[i - 1].tasacion = atof(find_token(row, 6));
+    vehiculos[i - 1].valor_pagado = atof(find_token(row, 11));
+    vehiculos[i - 1].puertas = atoi(find_token(row, 23));
+    i++;
   }
 }
 
@@ -147,9 +156,9 @@ int main(int argc, char const *argv[])
 {
   Coordinador coordinador;
   get_flags(argc, argv, &coordinador);
-  FILE *c = read_file(coordinador.nombre_archivo);
+  FILE *file = read_file(coordinador.nombre_archivo);
   Vehiculo vehiculos[coordinador.total_lineas];
-  read_lines(c, vehiculos, coordinador.total_lineas);
+  read_lines(file, vehiculos, coordinador.total_lineas);
   Map *tasaciones = map_tasaciones(vehiculos, coordinador.total_lineas);
   Map *valor_pagado = map_valor_pagado(vehiculos, coordinador.total_lineas);
   Map *puertas = map_puertas(vehiculos, coordinador.total_lineas);
