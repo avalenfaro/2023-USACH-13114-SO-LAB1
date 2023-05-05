@@ -1,2 +1,2 @@
 all:
-	gcc src/coordinador.c src/map.c src/reduce.c -o bin/main
+	gcc coordinador.c map.c reduce.c -o main
