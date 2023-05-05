@@ -14,6 +14,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <errno.h>
+#include <unistd.h>
 
 #include "map.h"
 #include "reduce.h"
@@ -31,25 +32,25 @@
  */
 void get_flags(int argc, char const *argv[], Coordinador *c)
 {
-  for (int i = 0; i < argc; i++)
+  int opt;
+  c->verbose = 0;
+  while ((opt = getopt(argc, (char *const *)argv, "i:c:d")) != -1)
   {
-    if (strcmp(argv[i], "-i") == 0)
+    switch (opt)
     {
-      strcpy(c->nombre_archivo, argv[i + 1]);
-    }
-
-    if (strcmp(argv[i], "-c") == 0)
-    {
-      c->total_lineas = atoi(argv[i + 1]);
-    }
-
-    if (strcmp(argv[i], "-d") == 0)
-    {
+    case 'i':
+      c->nombre_archivo = optarg;
+      break;
+    case 'c':
+      c->total_lineas = atoi(optarg);
+      break;
+    case 'd':
       c->verbose = 1;
-    }
-    else
-    {
-      c->verbose = 0;
+      break;
+    case '?':
+      printf("No existe el flag %c\n", optopt);
+    default:
+      abort();
     }
   }
 }

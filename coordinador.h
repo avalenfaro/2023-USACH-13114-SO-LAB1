@@ -1,6 +1,6 @@
 typedef struct
 {
-  char nombre_archivo[50];
+  char *nombre_archivo;
   int total_lineas;
   int verbose;
 } Coordinador;
