@@ -16,8 +16,8 @@ typedef struct
   float transporte_publico;
 } Map;
 
-Map *map_tasaciones(Vehiculo vehiculos[]);
-Map *map_valor_pagado(Vehiculo vehiculos[]);
-Map *map_puertas(Vehiculo vehiculos[]);
+Map *map_tasaciones(Vehiculo vehiculos[], int total_lineas);
+Map *map_valor_pagado(Vehiculo vehiculos[], int total_lineas);
+Map *map_puertas(Vehiculo vehiculos[], int total_lineas);
 
 #endif

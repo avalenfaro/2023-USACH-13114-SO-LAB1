@@ -11,10 +11,10 @@ const char *VEHICULO_LIVIANO_KEY = "Vehiculo Liviano";
 const char *CARGA_KEY = "Carga";
 const char *TRANSPORTE_PUBLICO_KEY = "Transporte Publico";
 
-Map *map_tasaciones(Vehiculo vehiculos[])
+Map *map_tasaciones(Vehiculo vehiculos[], int total_lineas)
 {
-  Map *map_tasacion = (Map *)malloc(sizeof(Map) * FILE_SIZE);
-  for (int i = 0; i < FILE_SIZE - 1; i++)
+  Map *map_tasacion = (Map *)malloc(sizeof(Map) * total_lineas);
+  for (int i = 0; i < total_lineas - 1; i++)
   {
     if (strcmp(vehiculos[i].grupo_vehiculo, VEHICULO_LIVIANO_KEY) == 0)
     {
@@ -35,10 +35,10 @@ Map *map_tasaciones(Vehiculo vehiculos[])
   return map_tasacion;
 }
 
-Map *map_valor_pagado(Vehiculo vehiculos[])
+Map *map_valor_pagado(Vehiculo vehiculos[], int total_lineas)
 {
-  Map *map_valor_pagado = (Map *)malloc(sizeof(Map) * FILE_SIZE);
-  for (int i = 0; i < FILE_SIZE - 1; i++)
+  Map *map_valor_pagado = (Map *)malloc(sizeof(Map) * total_lineas);
+  for (int i = 0; i < total_lineas - 1; i++)
   {
     if (strcmp(vehiculos[i].grupo_vehiculo, VEHICULO_LIVIANO_KEY) == 0)
     {
@@ -59,10 +59,10 @@ Map *map_valor_pagado(Vehiculo vehiculos[])
   return map_valor_pagado;
 }
 
-Map *map_puertas(Vehiculo vehiculos[])
+Map *map_puertas(Vehiculo vehiculos[], int total_lineas)
 {
-  Map *map_puertas = (Map *)malloc(sizeof(Map) * FILE_SIZE);
-  for (int i = 0; i < FILE_SIZE - 1; i++)
+  Map *map_puertas = (Map *)malloc(sizeof(Map) * total_lineas);
+  for (int i = 0; i < total_lineas - 1; i++)
   {
     if (strcmp(vehiculos[i].grupo_vehiculo, VEHICULO_LIVIANO_KEY) == 0)
     {

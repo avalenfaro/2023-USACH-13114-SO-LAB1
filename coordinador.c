@@ -1,3 +1,14 @@
+/**
+ * @file coordinador.c
+ * @author your name (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2023-05-05
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,6 +22,13 @@
 #define ROW_LENGHT 1000
 #define FILE_SIZE 9924
 
+/**
+ * @brief Get the flags object
+ *
+ * @param argc
+ * @param argv
+ * @param c
+ */
 void get_flags(int argc, char const *argv[], Coordinador *c)
 {
   for (int i = 0; i < argc; i++)
@@ -36,6 +54,12 @@ void get_flags(int argc, char const *argv[], Coordinador *c)
   }
 }
 
+/**
+ * @brief
+ *
+ * @param nombre_archivo
+ * @return FILE*
+ */
 FILE *read_file(char nombre_archivo[])
 {
   FILE *fp = fopen((const char *)nombre_archivo, "r");
@@ -74,9 +98,9 @@ void read_lines(FILE *fp, Vehiculo vehiculos[], int total_lineas)
   char row[ROW_LENGHT];
   fgets(row, ROW_LENGHT, fp);
 
-  for (int i = 0; i < 9924 - 1; i++)
+  for (int i = 0; i < total_lineas - 1; i++)
   {
-    fgets(row, ROW_LENGHT, fp);
+    fgets(row, total_lineas, fp);
     vehiculos[i].grupo_vehiculo = find_token(row, 1);
     vehiculos[i].tasacion = atof(find_token(row, 6));
     vehiculos[i].valor_pagado = atof(find_token(row, 11));
@@ -84,6 +108,12 @@ void read_lines(FILE *fp, Vehiculo vehiculos[], int total_lineas)
   }
 }
 
+/**
+ * @brief
+ *
+ * @param n
+ * @param vehiculos
+ */
 void head_vehiculos(int n, Vehiculo vehiculos[])
 {
   for (int i = 0; i < n; i++)
@@ -96,6 +126,12 @@ void head_vehiculos(int n, Vehiculo vehiculos[])
   }
 }
 
+/**
+ * @brief
+ *
+ * @param n
+ * @param map
+ */
 void head_mapeo(int n, Map map[])
 {
   for (int i = 0; i < n; i++)
@@ -112,13 +148,13 @@ int main(int argc, char const *argv[])
   Coordinador coordinador;
   get_flags(argc, argv, &coordinador);
   FILE *c = read_file(coordinador.nombre_archivo);
-  Vehiculo vehiculos[FILE_SIZE];
+  Vehiculo vehiculos[coordinador.total_lineas];
   read_lines(c, vehiculos, coordinador.total_lineas);
-  Map *tasaciones = map_tasaciones(vehiculos);
-  Map *valor_pagado = map_valor_pagado(vehiculos);
-  Map *puertas = map_puertas(vehiculos);
-  reduce_tasacion(tasaciones, coordinador.verbose);
-  reduce_valor_pagado(valor_pagado, coordinador.verbose);
-  reduce_puertas(puertas, coordinador.verbose);
+  Map *tasaciones = map_tasaciones(vehiculos, coordinador.total_lineas);
+  Map *valor_pagado = map_valor_pagado(vehiculos, coordinador.total_lineas);
+  Map *puertas = map_puertas(vehiculos, coordinador.total_lineas);
+  reduce_tasacion(tasaciones, coordinador.verbose, coordinador.total_lineas);
+  reduce_valor_pagado(valor_pagado, coordinador.verbose, coordinador.total_lineas);
+  reduce_puertas(puertas, coordinador.verbose, coordinador.total_lineas);
   return 0;
 }
